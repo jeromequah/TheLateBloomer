@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react';
 // import Navbar from "./components/Navbar/Navbar";
 
 // more scalable way of importing all components
-import {Products, Navbar } from './components';
+import {Products, Navbar, Cart} from './components';
 import {commerce} from "./lib/commerce";
 
 function App() {
@@ -38,6 +38,7 @@ function App() {
         <div>
             <Navbar totalItems={cart.total_items}/>
             <Products products={products} onAddToCart={handleAddToCart}/>
+            <Cart cart={cart}/>
         </div>
     )
 }
