@@ -2,14 +2,12 @@ import React from 'react';
 import {Button, Container, Grid, Typography} from "@material-ui/core";
 import useStyles from './styles'
 import CartItem from "./CartItem/CartItem";
-import {Link} from 'react-router-dom'
 
-function Cart({cart}) {
+function Cart({cart, handleEmptyCart, handleRemoveFromCart, handleUpdateCartQty}) {
     const classes = useStyles();
 
     const EmptyCart = () => (
-        <Typography variant="subtitle1">Cart is Empty!
-            <Link to="/" className={classes.link}>Start Shopping Here!</Link>
+        <Typography variant="h5" gutterBottom>Cart is Empty! :(
         </Typography>
     );
 
@@ -17,8 +15,10 @@ function Cart({cart}) {
         <>
             <Grid container spacing={3}>
                 {cart.line_items.map((item) => (
-                    <Grid items xs={12} sm={4} key={item.id}>
-                        <CartItem item={item}/>
+                    <Grid item xs={12} sm={4} key={item.id}>
+                        <CartItem item={item}
+                                  onUpdateCartQty={handleUpdateCartQty}
+                                  onRemoveFromCart={handleRemoveFromCart}/>
                     </Grid>
                 ))}
             </Grid>
@@ -28,7 +28,8 @@ function Cart({cart}) {
                 </Typography>
                 <div>
                     <Button className={classes.emptyButton}
-                            size="large" type="button" variant="contained" color="secondary">
+                            size="large" type="button" variant="contained" color="secondary"
+                            onClick={handleEmptyCart}>
                         Empty Cart
                     </Button>
                     <Button className={classes.checkoutButton}
