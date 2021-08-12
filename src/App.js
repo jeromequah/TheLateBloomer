@@ -65,7 +65,7 @@ function App() {
                             handleEmptyCart={handleEmptyCart}/>
                     </Route>
                     <Route exact path="/checkout">
-                        <Checkout/>
+                        <Checkout cart = {cart}/>
                     </Route>
                 </Switch>
             </div>
