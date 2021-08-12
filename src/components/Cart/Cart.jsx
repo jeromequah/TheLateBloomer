@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Container, Grid, Typography} from "@material-ui/core";
 import useStyles from './styles'
 import CartItem from "./CartItem/CartItem";
+import {Link} from 'react-router-dom';
 
 function Cart({cart, handleEmptyCart, handleRemoveFromCart, handleUpdateCartQty}) {
     const classes = useStyles();
@@ -33,6 +34,7 @@ function Cart({cart, handleEmptyCart, handleRemoveFromCart, handleUpdateCartQty}
                         Empty Cart
                     </Button>
                     <Button className={classes.checkoutButton}
+                            component={Link} to="/checkout"
                             size="large" type="button" variant="contained" color="primary">
                         Checkout
                     </Button>

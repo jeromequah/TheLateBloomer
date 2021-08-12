@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 // import Products from "./components/Products/Products";
 // import Navbar from "./components/Navbar/Navbar";
 // more scalable way of importing all components
-import {Cart, Navbar, Products} from './components';
+import {Cart, Navbar, Products, Checkout} from './components';
 import {commerce} from "./lib/commerce";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -63,6 +63,9 @@ function App() {
                             handleUpdateCartQty={handleUpdateCartQty}
                             handleRemoveFromCart={handleRemoveFromCart}
                             handleEmptyCart={handleEmptyCart}/>
+                    </Route>
+                    <Route exact path="/checkout">
+                        <Checkout/>
                     </Route>
                 </Switch>
             </div>
