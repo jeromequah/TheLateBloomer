@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Grid, InputLabel, MenuItem, Select, Typography} from "@material-ui/core";
 import {FormProvider, useForm} from 'react-hook-form';
 import FormInput from "./CustomTextField";
@@ -23,8 +23,6 @@ function AddressForm({checkoutToken, next}) {
             id: sO.id,
             label: `${sO.description} - (${sO.price.formatted_with_symbol})`
         }))
-
-    const mountedRef = useRef(false)
 
     const fetchShippingCountries = async (checkoutTokenId) => {
         const {countries} = await commerce.services.localeListShippingCountries(checkoutTokenId);
@@ -110,4 +108,5 @@ function AddressForm({checkoutToken, next}) {
         </>
     );
 }
+
 export default AddressForm;
