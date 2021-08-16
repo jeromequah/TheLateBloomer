@@ -24,7 +24,6 @@ function Checkout({cart, order, onCaptureCheckout, error}) {
     const [activeStep, setActiveStep] = useState(0);
     const [checkoutToken, setCheckoutToken] = useState(null);
     const [shippingData, setShippingData] = useState({});
-    const [isFinished, setIsFinished] = useState(false);
     const classes = useStyles();
     const history = useHistory();
 
@@ -54,12 +53,6 @@ function Checkout({cart, order, onCaptureCheckout, error}) {
         console.log(data);
     }
 
-    const timeout = () => {
-        setTimeout(() => {
-            setIsFinished(true)
-        }, 10000);
-    }
-
     const Form = () => (activeStep === 0
         ? <AddressForm checkoutToken={checkoutToken} next={next} setShippingData={setShippingData} nextStep={nextStep}/>
         : <PaymentForm
@@ -68,7 +61,7 @@ function Checkout({cart, order, onCaptureCheckout, error}) {
             backstep={backStep}
             onCaptureCheckout={onCaptureCheckout}
             nextStep={nextStep}
-            timeout={timeout}/>);
+        />);
 
     let Confirmation = () => (order.customer ? (
         <>
@@ -77,28 +70,16 @@ function Checkout({cart, order, onCaptureCheckout, error}) {
                     Hey {order.customer.firstname} {order.customer.lastname}, thank you for your purchase!
                 </Typography>
                 <Divider className={classes.divider}/>
-                <Typography variant="subtitle2">Order Ref: {order.customer.reference}</Typography>
+                <Typography variant="subtitle2">Order Ref: {order.customer_reference}</Typography>
             </div>
             <br/>
             <Button component={Link} to="/" variant="outlined" type="button">Back to Home!</Button>
         </>
-    ) : isFinished ? (
-            <>
-                <div>
-                    <Typography variant="h5">
-                        Thank you for your purchase!
-                    </Typography>
-                    <Divider className={classes.divider}/>
-                </div>
-                <br/>
-                <Button component={Link} to="/" variant="outlined" type="button">Back to Home!</Button>
-            </>
-        ) :
-        (
-            <div className={classes.spinner}>
-                <CircularProgress/>
-            </div>
-        ));
+    ) : (
+        <div className={classes.spinner}>
+            <CircularProgress/>
+        </div>
+    ));
 
     if (error) {
         Confirmation = () => (
