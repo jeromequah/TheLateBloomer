@@ -2,7 +2,7 @@
 <h3 align="center" ><strong> - The Emperor, Mulan (1998)</strong></h3>
 
 
-# Deployment
+# Deployment (Netlify) 🌐
 
 Access the site [here](https://thelatebloomersg.netlify.app/)!
 
