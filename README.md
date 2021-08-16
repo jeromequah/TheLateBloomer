@@ -1,6 +1,11 @@
 <h3 align="center" ><i>"The Flower That Blooms In Adversity Is The Most Rare And Beautiful Of All 🌺"</i></h3> 
 <h3 align="center" ><strong> - The Emperor, Mulan (1998)</strong></h3>
 
+
+# Deployment
+
+Access the site [here](https://thelatebloomersg.netlify.app/)!
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
